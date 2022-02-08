@@ -2,7 +2,7 @@ CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
 
 CREATE TABLE builds (
     id uuidv4 NOT NULL PRIMARY KEY DEFAULT uuid_generate_v4(),
-    repository varchar(100) NOT NULL, -- GitHub repository names have a character limit of 100
+    repository varchar(100) NOT NULL,
     git_commit varchar(72) NOT NULL, 
     branch varchar(256),
     created timestampz DEFAULT NOW(),
