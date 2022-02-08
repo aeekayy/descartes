@@ -8,3 +8,10 @@ CREATE TABLE builds (
     created timestampz DEFAULT NOW(),
     updated timestampz DEFAULT NOW()
 )
+
+CREATE TABLE resources (
+    id uuidv4 NOT NULL PRIMARY KEY DEFAULT uuid_generate_v4(),
+    name varchar(256) NOT NULL,
+    created timestampz DEFAULT NOW(),
+    updated timestampz DEFAULT NOW()
+)
