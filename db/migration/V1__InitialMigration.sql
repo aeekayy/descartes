@@ -1,4 +1,4 @@
-CREATE EXTENSION "uuid-ossp" IF NOT EXISTS;
+CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
 
 CREATE TABLE builds (
     id uuidv4 NOT NULL PRIMARY KEY DEFAULT uuid_generate_v4(),
