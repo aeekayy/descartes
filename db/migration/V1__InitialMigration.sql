@@ -7,11 +7,11 @@ CREATE TABLE builds (
     branch varchar(256),
     created timestampz DEFAULT NOW(),
     updated timestampz DEFAULT NOW()
-)
+);
 
 CREATE TABLE resources (
     id uuid NOT NULL PRIMARY KEY DEFAULT uuid_generate_v4(),
     name varchar(256) NOT NULL,
     created timestampz DEFAULT NOW(),
     updated timestampz DEFAULT NOW()
-)
+);
