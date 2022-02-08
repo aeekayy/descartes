@@ -1,0 +1,18 @@
+name: Flyway Migration
+on:
+  push:
+    branches:
+      - 'main'
+    paths:
+      - 'db/migration/**'
+jobs:
+  flyway:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: joshuaavalon/flyway-action@v1
+        with:
+          url: jdbc:postgresql://${{ secrets.POSTGRES_DB_HOST }}/${{ secrets.POSTGRES_DB_NAME }}
+          user: ${{ secrets.POSTGRES_DB_USER }}
+          password: ${{ secrets.POSTGRES_DB_PWD }}
+          locations: filesystem: ./db/migration/
