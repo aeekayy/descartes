@@ -6,7 +6,8 @@ ENV GOPRIVATE github.com/aeekayy/descartes
 COPY . .
 RUN go mod tidy
 
-RUN GOOS=linux GOARCH=amd64 go build go build -o ./descartes
+RUN GOOS=linux GOARCH=amd64 go build -o ./descartes
+RUN ls -latr
 
 FROM alpine
 
