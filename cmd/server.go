@@ -16,8 +16,6 @@ limitations under the License.
 package cmd
 
 import (
-	"fmt"
-
 	"github.com/spf13/cobra"
 )
 
@@ -28,9 +26,6 @@ var serverCmd = &cobra.Command{
 	Long: `Starts the Descartes web server that serves
 an API. The API is used to perform admin tasks and
 functions.`,
-	Run: func(cmd *cobra.Command, args []string) {
-		fmt.Println("server called")
-	},
 }
 
 func init() {

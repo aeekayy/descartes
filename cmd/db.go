@@ -16,8 +16,6 @@ limitations under the License.
 package cmd
 
 import (
-	"fmt"
-
 	"github.com/spf13/cobra"
 )
 
@@ -28,9 +26,6 @@ var dbCmd = &cobra.Command{
 	Long: `For the management of database related tasks
 such as database migrations and retrieving records from a 
 database.`,
-	Run: func(cmd *cobra.Command, args []string) {
-		fmt.Println("db called")
-	},
 }
 
 func init() {

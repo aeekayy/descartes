@@ -19,25 +19,33 @@ import (
 	"fmt"
 
 	"github.com/spf13/cobra"
+
+	"github.com/aeekayy/descartes/pkg/config"
+	"github.com/aeekayy/descartes/pkg/http"
 )
 
 // startCmd represents the start command
 var startCmd = &cobra.Command{
 	Use:   "start",
-	Short: "A brief description of your command",
-	Long: `A longer description that spans multiple lines and likely contains examples
-and usage of using your command. For example:
-
-Cobra is a CLI library for Go that empowers applications.
-This application is a tool to generate the needed files
-to quickly create a Cobra application.`,
+	Short: "Starts a http server",
+	Long: `Starts a http server. Supply the port 
+that will run the web server.`,
 	Run: func(cmd *cobra.Command, args []string) {
 		fmt.Println("start called")
+
+		appConfig, err := config.NewAppConfig(8080)
+		if err != nil {
+			fmt.Printf("error starting the server: %s", err)
+			return
+		}
+		app, err := http.NewServer(appConfig)
+		port := fmt.Sprintf(":%d", 8080)
+		app.Listen(port)
 	},
 }
 
 func init() {
-	rootCmd.AddCommand(startCmd)
+	serverCmd.AddCommand(startCmd)
 
 	// Here you will define your flags and configuration settings.
 

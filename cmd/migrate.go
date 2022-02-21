@@ -16,7 +16,9 @@ limitations under the License.
 package cmd
 
 import (
+	"errors"
 	"fmt"
+	"os"
 
 	"github.com/spf13/cobra"
 )
@@ -25,19 +27,24 @@ var dbConfigFilename string
 
 // migrateCmd represents the migrate command
 var migrateCmd = &cobra.Command{
-	Use:   "migrate",
-	Short: "A brief description of your command",
-	Long: `A longer description that spans multiple lines and likely contains examples
-and usage of using your command. For example:
+	Use:   "migrate [config]",
+	Short: "A way to migrate a database based on the yaml passed in",
+	Long: `A way to migrate a database based on the yaml passed in.
 
-Cobra is a CLI library for Go that empowers applications.
-This application is a tool to generate the needed files
-to quickly create a Cobra application.`,
-	Args: cobra.PositionalArgs(1), // convert to the appropriate value
+descartes db migrate <YAML>
+
+This allows you to migrate your database with the parameter YAML.`,
+	Args: cobra.MinimumNArgs(1),
 	Run: func(cmd *cobra.Command, args []string) {
 		fmt.Println("migrate called")
 		// retrieve the argument and use it as a filename
+		dbConfigFilename = args[0]
+
 		// validate the path to see if it exists
+		if _, err := os.Stat(dbConfigFilename); errors.Is(err, os.ErrNotExist) {
+			fmt.Printf("the file %s does not exist. exiting.", dbConfigFilename)
+		}
+
 		// if all is well, run the migration
 	},
 }
