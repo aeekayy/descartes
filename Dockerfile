@@ -3,10 +3,10 @@ FROM golang:1.17-alpine AS builder
 WORKDIR /app
 
 ENV GOPRIVATE github.com/aeekayy/descartes
-COPY * ./
-RUN go mod download
+COPY . .
+RUN go mod tidy
 
-RUN go build -o ./descartes
+RUN GOOS=linux GOARCH=amd64 go build go build -o ./descartes
 
 FROM alpine
 
