@@ -2,11 +2,9 @@ FROM golang:1.17-alpine AS builder
 
 WORKDIR /app
 
-COPY go.mod ./
-COPY go.sum ./
-RUN go mod download
-
+ENV GOPRIVATE github.com/aeekayy/descartes
 COPY * ./
+RUN go mod download
 
 RUN go build -o ./descartes
 
