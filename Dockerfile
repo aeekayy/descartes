@@ -17,4 +17,4 @@ RUN apk add bash curl
 COPY --from=builder /app/descartes /app/
 EXPOSE 8080
 
-CMD [ "/app/descartes" ]
+CMD [ "/app/descartes", "server", "start" ]
