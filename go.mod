@@ -4,6 +4,8 @@ go 1.17
 
 require (
 	github.com/gofiber/fiber/v2 v2.27.0
+	github.com/lib/pq v1.10.4
+	github.com/robfig/cron/v3 v3.0.1
 	github.com/spf13/cobra v1.3.0
 	github.com/spf13/viper v1.10.1
 )

@@ -22,6 +22,7 @@ import (
 
 	"github.com/aeekayy/descartes/pkg/config"
 	"github.com/aeekayy/descartes/pkg/http"
+	"github.com/aeekayy/descartes/pkg/cron"
 )
 
 var (
@@ -36,6 +37,15 @@ var startCmd = &cobra.Command{
 that will run the web server.`,
 	Run: func(cmd *cobra.Command, args []string) {
 		fmt.Println("start called")
+
+		// start the cron job
+		cronConfig, err := config.NewCronConfig()
+		if err != nil {
+			fmt.Printf("error starting the cron: %s", err)
+			return
+		}
+		cronManager := cron.New(cronConfig)
+		cronManager.Start()
 
 		appConfig, err := config.NewAppConfig(serverPort)
 		if err != nil {
