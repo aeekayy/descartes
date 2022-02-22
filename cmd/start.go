@@ -24,6 +24,10 @@ import (
 	"github.com/aeekayy/descartes/pkg/http"
 )
 
+var (
+	serverPort string
+)
+
 // startCmd represents the start command
 var startCmd = &cobra.Command{
 	Use:   "start",
@@ -33,13 +37,13 @@ that will run the web server.`,
 	Run: func(cmd *cobra.Command, args []string) {
 		fmt.Println("start called")
 
-		appConfig, err := config.NewAppConfig(8080)
+		appConfig, err := config.NewAppConfig(serverPort)
 		if err != nil {
 			fmt.Printf("error starting the server: %s", err)
 			return
 		}
 		app, err := http.NewServer(appConfig)
-		port := fmt.Sprintf(":%d", 8080)
+		port := fmt.Sprintf(":%d", serverPort)
 		app.Listen(port)
 	},
 }
@@ -55,5 +59,5 @@ func init() {
 
 	// Cobra supports local flags which will only run when this command
 	// is called directly, e.g.:
-	// startCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
+	startCmd.Flags().StringVarP(&serverPort, "port", "p", "8080", "The port where the server should run.")
 }
