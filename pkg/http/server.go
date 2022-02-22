@@ -13,7 +13,7 @@ import (
 func NewServer(config *config.AppConfig) (*fiber.App, error) {
 	app := fiber.New()
 
-	fmt.Printf("Using port of %d\n", config.Port)
+	fmt.Printf("Using port of %s\n", config.Port)
 
 	app.Get("/", func(c *fiber.Ctx) error {
 		return c.Status(200).JSON(&fiber.Map{

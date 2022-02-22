@@ -23,7 +23,7 @@ COPY --from=builder /app/descartes /app/
 RUN adduser -D app
 USER app
 
-HEALTHCHECK --interval=5m --timeout=3s \
-  CMD curl -f http://localhost:8080/ping || exit 1
+#HEALTHCHECK --interval=5m --timeout=3s \
+#  CMD curl -f http://localhost:8080/ping || exit 1
 
-CMD [ "/app/descartes", "server", "start", "-p", "$PORT" ]
+CMD /app/descartes server start -p $PORT
