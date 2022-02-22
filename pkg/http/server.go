@@ -15,6 +15,13 @@ func NewServer(config *config.AppConfig) (*fiber.App, error) {
 
 	fmt.Printf("Using port of %d\n", config.Port)
 
+	app.Get("/", func(c *fiber.Ctx) error {
+		return c.Status(200).JSON(&fiber.Map{
+			"success": true,
+			"pong":    true,
+		})
+	})
+
 	app.Get("/ping", func(c *fiber.Ctx) error {
 		return c.Status(200).JSON(&fiber.Map{
 			"success": true,
