@@ -43,7 +43,7 @@ that will run the web server.`,
 			return
 		}
 		app, err := http.NewServer(appConfig)
-		port := fmt.Sprintf(":%d", serverPort)
+		port := fmt.Sprintf(":%s", serverPort)
 		app.Listen(port)
 	},
 }
