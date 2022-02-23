@@ -12,22 +12,22 @@ type AppConfig struct {
 
 // CronConfig stores the cron job configuration
 type CronConfig struct {
-	DB CronConfigDB `yaml:"db",json:"db"`
+	DB  CronConfigDB  `yaml:"db",json:"db"`
 	API CronConfigAPI `yaml:"api",json:"api"`
 }
 
 // CronConfigDB
 type CronConfigDB struct {
 	Host     string `yaml:"host",json:"host"`
-		Port     int    `yaml:"port",json:"port"`
-		Name     string `yaml:"name",json:"name"`
-		Username string `yaml:"username",json:"username"`
-		Password string `yaml:"password",json:"password"`
+	Port     int    `yaml:"port",json:"port"`
+	Name     string `yaml:"name",json:"name"`
+	Username string `yaml:"username",json:"username"`
+	Password string `yaml:"password",json:"password"`
 }
 
 // CronConfigAPI
 type CronConfigAPI struct {
-	Keys		CronConfigAPIKeys		`yaml:"keys",json:"keys"`
+	Keys CronConfigAPIKeys `yaml:"keys",json:"keys"`
 }
 
 // CronConfigAPIKeys

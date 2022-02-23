@@ -16,7 +16,7 @@ import (
 )
 
 const (
-	alphaVantageAPI    = "https://www.alphavantage.co/query"
+	alphaVantageAPI = "https://www.alphavantage.co/query"
 )
 
 type CronServer struct {

@@ -21,8 +21,8 @@ import (
 	"github.com/spf13/cobra"
 
 	"github.com/aeekayy/descartes/pkg/config"
-	"github.com/aeekayy/descartes/pkg/http"
 	"github.com/aeekayy/descartes/pkg/cron"
+	"github.com/aeekayy/descartes/pkg/http"
 )
 
 var (
