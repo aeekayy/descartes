@@ -2,7 +2,7 @@ FROM golang:1.17-alpine AS builder
 
 WORKDIR /app
 
-ENV GOPRIVATE github.com/aeekayy/descartes
+ENV GOPRIVATE github.com/aeekayy/descartes/server
 COPY . .
 RUN go mod tidy
 
