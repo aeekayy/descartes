@@ -73,6 +73,7 @@ func initConfig() {
 
 		// Search config in home directory with name ".descartes" (without extension).
 		viper.AddConfigPath(home)
+		viper.AddConfigPath(".")
 		viper.SetConfigType("yaml")
 		viper.SetConfigName(".descartes-cli")
 	}
