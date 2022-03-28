@@ -1,5 +1,4 @@
 *.js
-package-lock.json
 yarn.lock
 config/
 output/
