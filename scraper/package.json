@@ -1,7 +1,7 @@
 {
   "name": "descartes-scraper",
   "scripts": {
-    "build": "tsc worker.ts",
+    "build": "tsc",
     "start": "node worker.js"
   },
   "keywords": [
