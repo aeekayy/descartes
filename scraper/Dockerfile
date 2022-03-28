@@ -11,7 +11,7 @@ ENV NODE_ENV=production
 RUN apk add --no-cache tini
 WORKDIR /usr/src/app
 COPY package*.json ./
-RUN chown node:node .
+RUN chown -R node:node .
 USER node
 RUN npm install
 COPY --from=builder /app/lib/ lib/
