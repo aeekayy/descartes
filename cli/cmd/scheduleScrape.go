@@ -24,6 +24,8 @@ import (
 	"github.com/google/uuid"
 	"github.com/spf13/cobra"
 	"github.com/spf13/viper"
+
+	gomqtt "github.com/aeekayy/descartes/cli/pkg/mqtt"
 )
 
 type scrapemsg struct {
@@ -59,27 +61,26 @@ features available from the scrape service.`,
 
 		// this should really be a web hook but for now, we'll just use mqtt
 		// for quick and dirty
-		mh := viper.GetString("mqtt.host")
-		mp := viper.GetInt("mqtt.port")
-		mu := viper.GetString("mqtt.username")
-		mpwd := viper.GetString("mqtt.password")
-		mt := viper.GetString("mqtt.topics.scrape")
+		conf := &gomqtt.Config{}
+		err = viper.UnmarshalKey("mqtt", conf)
+		if err != nil {
+			fmt.Printf("unable to decode into config struct, %v", err)
+			return
+		}
 		mc := fmt.Sprintf("cli-%s", uuid.New().String())
 
-		opts := mqtt.NewClientOptions()
-		opts.AddBroker(fmt.Sprintf("tls://%s:%d", mh, mp))
-		opts.SetClientID(mc) // set a name as you desire
-		opts.SetUsername(mu) // these are the credentials that you declare for your cluster
-		opts.SetPassword(mpwd)
+		client, err := gomqtt.NewClient(mc, conf)
 
-		client := mqtt.NewClient(opts)
+		if err != nil {
+			fmt.Printf("[error]: can't create client %v\n", err)
+		}
 		// throw an error if the connection isn't successfull
 		if token := client.Connect(); token.Wait() && token.Error() != nil {
 			fmt.Printf("[error]: couldn't connect to client %v\n", token.Error())
 			return
 		}
 
-		err = publishMqtt(client, mt, string(msg))
+		err = publishMqtt(client, conf.Topics["scrape"], string(msg))
 
 		if err != nil {
 			fmt.Printf("[error]: couldn't publish message to client %v\n", err)
