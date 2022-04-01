@@ -4,7 +4,7 @@ on:
     branches:
       - 'main'
     paths:
-      - 'db/migration/**'
+      - 'server/db/migration/**'
 jobs:
   flyway:
     runs-on: ubuntu-latest
@@ -15,4 +15,4 @@ jobs:
           url: jdbc:postgresql://${{ secrets.POSTGRES_DB_HOST }}/${{ secrets.POSTGRES_DB_NAME }}
           user: ${{ secrets.POSTGRES_DB_USER }}
           password: ${{ secrets.POSTGRES_DB_PWD }}
-          locations: filesystem:./db/migration
+          locations: filesystem:./server/db/migration
