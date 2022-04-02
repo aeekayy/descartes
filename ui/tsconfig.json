@@ -1,0 +1,11 @@
+{
+  "compilerOptions": {
+    "esModuleInterop": true,
+    "sourceMap": true,
+    "strict": true,
+    "lib": ["es2019"],
+      "outDir": "lib",
+      "target": "es2019" 
+  },
+  "include": ["src"]
+}
