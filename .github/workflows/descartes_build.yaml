@@ -36,14 +36,4 @@ jobs:
         with:
           push: true
           context: ./server/
-          tags: aeekay/descartes:${{ matrix.go }}
-      - uses: akhileshns/heroku-deploy@v3.12.12 # This is the action
-        if: ${{ matrix.go=='1.17' }}
-        with:
-          heroku_api_key: ${{secrets.HEROKU_API_KEY}}
-          heroku_app_name: "${{secrets.HEROKU_APP_NAME}}" #Must be unique in Heroku
-          heroku_email: "${{secrets.HEROKU_EMAIL}}"
-          branch: "${{env.GITHUB_REF_NAME}}"
-          dontuseforce: 0
-          usedocker: true
-          #rollbackonhealthcheckfailed: true     
+          tags: aeekay/descartes:${{ matrix.go }}  

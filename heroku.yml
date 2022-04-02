@@ -1,5 +1,5 @@
 build:
   docker:
-    web: server/Dockerfile
+    web: server/Dockerfile.web
 run:
   web: /app/descartes server start
