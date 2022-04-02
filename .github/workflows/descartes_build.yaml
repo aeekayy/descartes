@@ -1,4 +1,4 @@
-name: Build Descartes
+name: Build Descartes Server
 on:
   push:
     branches:
