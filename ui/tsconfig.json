@@ -8,7 +8,7 @@
       "dom.iterable",
       "es2019"
     ],
-    "outDir": "lib",
+    "outDir": "build",
     "target": "es2019",
     "jsx": "react-jsx",
     "moduleResolution": "node",
