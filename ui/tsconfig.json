@@ -3,10 +3,17 @@
     "esModuleInterop": true,
     "sourceMap": true,
     "strict": true,
-    "lib": ["es2019"],
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "es2019"
+    ],
     "outDir": "lib",
     "target": "es2019",
-    "jsx": "react-jsx"
+    "jsx": "react-jsx",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
   },
   "include": ["src"]
 }
